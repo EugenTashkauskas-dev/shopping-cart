@@ -1,7 +1,7 @@
-import { useDispatch } from 'react-redux';
-import { useBuyProducts } from '../model/useBuyProducts';
-import { useCallback } from 'react';
-import { setOpenedState } from '@entities/CartItem/model/Cart.slice';
+import { useDispatch } from "react-redux";
+import { useBuyProducts } from "../model/useBuyProducts";
+import { useCallback } from "react";
+import { setOpenedState } from "@entities/CartItem/model/Cart.slice";
 
 export const BuyAllButton = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ export const BuyAllButton = () => {
 
   return (
     <button
-      className='bg-green-500 my-2 border border-green-400 text-white w-32 rounded'
+      className="bg-green-500 my-2 border border-green-400 text-white w-32 rounded"
       onClick={handleBuyAll}
     >
       Buy All

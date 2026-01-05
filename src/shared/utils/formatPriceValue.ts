@@ -1,2 +1,2 @@
 export const formatPriceValue = (price: number) =>
-  `${price ? price.toFixed(2) : '0.00'}`;
+  `${price ? price.toFixed(2) : "0.00"}`;

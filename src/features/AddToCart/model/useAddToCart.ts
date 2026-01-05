@@ -1,6 +1,6 @@
-import { addNewItem } from '@entities/CartItem/model/Cart.slice';
-import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { addNewItem } from "@entities/CartItem/model/Cart.slice";
+import { useCallback } from "react";
+import { useDispatch } from "react-redux";
 
 export const useAddToCart = () => {
   const dispatch = useDispatch();

@@ -1,8 +1,8 @@
-import { useAddToCart } from '@features/AddToCart/model/useAddToCart';
-import type { ShoppingCartItemProps } from '../model/ShoppingCartItem.types';
-import { useRemoveFromCart } from '@features/RemoveFromCart/model/useRemoveFromCart';
-import { useSetCartItemQuantity } from '@features/SetCartItemsCount/model/useSetCartItemQuantity';
-import { useCallback, type ChangeEvent } from 'react';
+import { useAddToCart } from "@features/AddToCart/model/useAddToCart";
+import type { ShoppingCartItemProps } from "../model/ShoppingCartItem.types";
+import { useRemoveFromCart } from "@features/RemoveFromCart/model/useRemoveFromCart";
+import { useSetCartItemQuantity } from "@features/SetCartItemsCount/model/useSetCartItemQuantity";
+import { useCallback, type ChangeEvent } from "react";
 
 export const ShoppingCartItemCount = ({ item }: ShoppingCartItemProps) => {
   const addToCart = useAddToCart();
@@ -42,24 +42,24 @@ export const ShoppingCartItemCount = ({ item }: ShoppingCartItemProps) => {
   }
 
   return (
-    <div className='flex flex-row justify-center items-center gap-1 min-w-28'>
+    <div className="flex flex-row justify-center items-center gap-1 min-w-28">
       <button
-        className='w-8 h-8 border border-gray-300 rounded text-center'
+        className="w-8 h-8 border border-gray-300 rounded text-center"
         onClick={decrementQuantity}
         disabled={item.quantity <= 1}
       >
         -
       </button>
       <input
-        type='number'
-        className='w-8 h-8 p-1 rounded border border-gray-300 hover:border-gray-300 appearance-none'
+        type="number"
+        className="w-8 h-8 p-1 rounded border border-gray-300 hover:border-gray-300 appearance-none"
         value={item.quantity}
         min={1}
         max={99}
         onChange={handleCountChange}
       />
       <button
-        className='w-8 h-8 border border-gray-300 rounded text-center'
+        className="w-8 h-8 border border-gray-300 rounded text-center"
         onClick={incrementQuantity}
         disabled={item.quantity >= 99}
       >

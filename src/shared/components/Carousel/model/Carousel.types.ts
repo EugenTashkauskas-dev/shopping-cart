@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export type CarouselProps<T> = {
   items: T[];
@@ -9,5 +9,5 @@ export type CarouselProps<T> = {
 export type NavButtonProps = {
   disabled: boolean;
   onClick: () => void;
-  position?: 'left' | 'right';
+  position?: "left" | "right";
 };

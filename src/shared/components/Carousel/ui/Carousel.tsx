@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import classnames from 'classnames';
-import { CarouselItem } from './CarouselItem';
-import { NavButton } from './NavButton';
-import type { CarouselProps } from '../model/Carousel.types';
+import { useCallback, useEffect, useRef, useState } from "react";
+import classnames from "classnames";
+import { CarouselItem } from "./CarouselItem";
+import { NavButton } from "./NavButton";
+import type { CarouselProps } from "../model/Carousel.types";
 
 export const Carousel = <T,>({
   items,
@@ -26,12 +26,12 @@ export const Carousel = <T,>({
   }, [currentIndex, items.length]);
 
   const isDisabled = useCallback(
-    (direction: 'prev' | 'next') => {
-      if (direction === 'prev') {
+    (direction: "prev" | "next") => {
+      if (direction === "prev") {
         return currentIndex <= 0;
       }
 
-      if (direction === 'next' && carousel.current !== null) {
+      if (direction === "next" && carousel.current !== null) {
         return (
           carousel.current?.offsetWidth * currentIndex >= maxScrollWidth.current
         );
@@ -55,33 +55,33 @@ export const Carousel = <T,>({
   }, []);
 
   return (
-    <div className='carousel my-12 mx-auto'>
-      <div className='relative overflow-hidden'>
+    <div className="carousel my-12 mx-auto">
+      <div className="relative overflow-hidden">
         <NavButton
-          position='left'
+          position="left"
           onClick={movePrev}
           // eslint-disable-next-line react-hooks/refs
-          disabled={isDisabled('prev')}
+          disabled={isDisabled("prev")}
         />
         <NavButton
-          position='right'
+          position="right"
           onClick={moveNext}
           // eslint-disable-next-line react-hooks/refs
-          disabled={isDisabled('next')}
+          disabled={isDisabled("next")}
         />
         <div
           ref={carousel}
           className={classnames(
-            'carousel-container',
-            'relative',
-            'flex',
-            'mx-10',
-            'overflow-hidden',
-            'scroll-smooth',
-            'snap-x',
-            'snap-mandatory',
-            'touch-pan-x',
-            'z-0',
+            "carousel-container",
+            "relative",
+            "flex",
+            "mx-10",
+            "overflow-hidden",
+            "scroll-smooth",
+            "snap-x",
+            "snap-mandatory",
+            "touch-pan-x",
+            "z-0",
           )}
         >
           {items.map((item) => (

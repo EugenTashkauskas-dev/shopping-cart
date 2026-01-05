@@ -1,5 +1,5 @@
-import type { AppState } from '@shared/types/app.types';
-import { shoppingCartSlice } from './Cart.slice';
+import type { AppState } from "@shared/types/app.types";
+import { shoppingCartSlice } from "./Cart.slice";
 
 export const selectCartItems = (state: AppState) =>
   state[shoppingCartSlice.name].items;

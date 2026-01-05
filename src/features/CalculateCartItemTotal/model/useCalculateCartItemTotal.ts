@@ -1,7 +1,7 @@
-import type { CartItem } from '@entities/CartItem/model/types';
-import { products } from '@entities/product/model/products.mock';
-import { getCartItemPrice } from '@shared/utils/getCartItemPrice';
-import { useMemo } from 'react';
+import type { CartItem } from "@entities/CartItem/model/types";
+import { products } from "@entities/product/model/products.mock";
+import { getCartItemPrice } from "@shared/utils/getCartItemPrice";
+import { useMemo } from "react";
 
 export const useCalculateCartItemTotal = (item: CartItem) => {
   const itemCost = useMemo(() => {

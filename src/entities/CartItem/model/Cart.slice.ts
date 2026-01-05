@@ -1,5 +1,5 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { CartItem, CartItemsState } from './types';
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import type { CartItem, CartItemsState } from "./types";
 
 const initialState: CartItemsState = {
   items: [] as CartItem[],
@@ -7,7 +7,7 @@ const initialState: CartItemsState = {
 };
 
 export const shoppingCartSlice = createSlice({
-  name: 'shoppingCart',
+  name: "shoppingCart",
   initialState,
   reducers: {
     addNewItem: (state, action: PayloadAction<CartItem>) => {
@@ -67,7 +67,7 @@ export const {
   removeOneItem,
   removeAllItems,
   clearCart,
-  setOpenedState
+  setOpenedState,
 } = shoppingCartSlice.actions;
 
 export default shoppingCartSlice.reducer;

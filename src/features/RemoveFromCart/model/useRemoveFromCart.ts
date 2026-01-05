@@ -1,6 +1,6 @@
-import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import { removeOneItem } from '@entities/CartItem/model/Cart.slice';
+import { useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { removeOneItem } from "@entities/CartItem/model/Cart.slice";
 
 export const useRemoveFromCart = () => {
   const dispatch = useDispatch();

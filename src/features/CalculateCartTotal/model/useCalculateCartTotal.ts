@@ -1,8 +1,8 @@
-import { selectCartItems } from '@entities/CartItem/model/selectors';
-import { products } from '@entities/product/model/products.mock';
-import { getCartItemPrice } from '@shared/utils/getCartItemPrice';
-import { useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import { selectCartItems } from "@entities/CartItem/model/selectors";
+import { products } from "@entities/product/model/products.mock";
+import { getCartItemPrice } from "@shared/utils/getCartItemPrice";
+import { useMemo } from "react";
+import { useSelector } from "react-redux";
 
 export const useCalculateCartTotal = () => {
   const cartItems = useSelector(selectCartItems);
