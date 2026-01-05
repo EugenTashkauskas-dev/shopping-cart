@@ -1,0 +1,10 @@
+@import 'tailwindcss';
+
+#root {
+  width: 100%;
+  overflow: hidden;
+}
+
+@theme {
+  --shopping-cart-height: calc(100dvh - 211px);
+}
