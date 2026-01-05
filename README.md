@@ -1,6 +1,7 @@
 # Shopping Cart project
 
 This small project is a task given to check knowledge level of React and Tailwind CSS
+
 Demo link: https://eugentashkauskas-dev.github.io/shopping-cart/
 
 ## Used tech.stack
