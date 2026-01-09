@@ -1,4 +1,4 @@
-import { store } from "@app/store";
+import { store } from "./store";
 import "./App.css";
 import { Provider } from "react-redux";
 import { IndexPage } from "@pages/IndexPage";

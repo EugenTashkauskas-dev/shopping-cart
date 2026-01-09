@@ -14,18 +14,20 @@ export const Carousel = <T,>({
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const movePrev = useCallback(() => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prevState) => prevState - 1);
+    if (currentIndex === 0) {
+      return setCurrentIndex(Math.ceil(maxScrollWidth.current / currentIndex));
     }
-  }, [currentIndex]);
+    setCurrentIndex((prevState) => prevState - 1)
+  }, [items.length]);
 
   const moveNext = useCallback(() => {
-    if (currentIndex < items.length - 1) {
-      setCurrentIndex((prevState) => prevState + 1);
+    if ((carousel?.current?.offsetWidth ?? 0) * currentIndex > maxScrollWidth.current) {
+      return setCurrentIndex(0);
     }
-  }, [currentIndex, items.length]);
+    setCurrentIndex((prevState) => prevState + 1);
+  }, [items.length]);
 
-  const isDisabled = useCallback(
+  /* const isDisabled = useCallback(
     (direction: "prev" | "next") => {
       if (direction === "prev") {
         return currentIndex <= 0;
@@ -40,7 +42,7 @@ export const Carousel = <T,>({
       return false;
     },
     [currentIndex],
-  );
+  ); */
 
   useEffect(() => {
     if (carousel !== null && carousel.current !== null) {
@@ -60,14 +62,10 @@ export const Carousel = <T,>({
         <NavButton
           position="left"
           onClick={movePrev}
-          // eslint-disable-next-line react-hooks/refs
-          disabled={isDisabled("prev")}
         />
         <NavButton
           position="right"
           onClick={moveNext}
-          // eslint-disable-next-line react-hooks/refs
-          disabled={isDisabled("next")}
         />
         <div
           ref={carousel}

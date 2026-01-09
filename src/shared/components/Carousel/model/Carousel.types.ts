@@ -7,7 +7,7 @@ export type CarouselProps<T> = {
 };
 
 export type NavButtonProps = {
-  disabled: boolean;
+  disabled?: boolean;
   onClick: () => void;
   position?: "left" | "right";
 };

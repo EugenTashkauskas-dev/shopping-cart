@@ -13,7 +13,7 @@ export const CarouselItem = <T,>({
         "text-center",
         "relative",
         "min-w-full",
-        "xl:min-w-1/3",
+        "xl:min-w-1/5",
         "md:min-w-1/2",
         "snap-start",
         "border",
