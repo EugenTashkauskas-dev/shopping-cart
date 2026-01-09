@@ -1,6 +1,6 @@
 import type { CartItem } from "@entities/CartItem/model/types";
-import type { Product } from "@entities/product/model/types";
-import type { ItemPrice } from "@shared/types/app.types";
+import type { Product } from "@entities/Product/model/types";
+import type { ItemPrice } from "@features/CalculateCartItemTotal/model/CartItemPrice.types";
 
 export const getCartItemPrice = (
   item: CartItem,

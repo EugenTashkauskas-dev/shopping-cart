@@ -1,9 +1,9 @@
 import classnames from "classnames";
-import { products } from "@entities/product/model/products.mock";
-import type { Product } from "@entities/product/model/types";
-import { ProductView } from "@entities/product/ui/Product";
+import { products } from "@entities/Product/model/products.mock";
+import type { Product } from "@entities/Product/model/types";
+import { ProductView } from "@entities/Product/ui/Product";
 import { AddToCartButton } from "@features/AddToCart/ui/AddToCartButton";
-import { Carousel } from "@shared/components/Carousel/ui/Carousel";
+import { Carousel } from "@shared/ui/Carousel/ui/Carousel";
 
 export const ProductsCarousel = () => {
   return (

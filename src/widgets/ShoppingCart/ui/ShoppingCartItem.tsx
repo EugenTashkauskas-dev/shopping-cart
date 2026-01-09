@@ -1,8 +1,8 @@
 import classnames from "classnames";
-import { ProductView } from "@entities/product/ui/Product";
+import { ProductView } from "@entities/Product/ui/Product";
 import type { ShoppingCartItemProps } from "../model/ShoppingCartItem.types";
 import { useMemo } from "react";
-import { products } from "@entities/product/model/products.mock";
+import { products } from "@entities/Product/model/products.mock";
 import { ShoppingCartItemCount } from "./ShoppingCartItemCount";
 import { RemoveSameProductItemsFromCartButton } from "@features/RemoveSameProductItemsFromCart/ui/RemoveSameProductItesmsFromCartButton";
 import { CartItemPrice } from "@features/CalculateCartItemTotal/ui/CartItemPrice";

@@ -1,4 +1,4 @@
-import { Modal } from "@shared/components/Modal/ui/Modal";
+import { Modal } from "@shared/ui/Modal/ui/Modal";
 import { ShoppingCart } from "./ShoppingCart";
 import { useDispatch, useSelector } from "react-redux";
 import { selectOpenState } from "@entities/CartItem/model/selectors";
