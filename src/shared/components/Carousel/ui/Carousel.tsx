@@ -46,6 +46,8 @@ export const Carousel = <T,>({
     const containerWidth = carousel.current?.offsetWidth ?? 0;
     const newItemWidth =
       carousel.current?.firstElementChild?.getBoundingClientRect().width ?? 1;
+    console.log('CONTAINER WIDTH!!!!!', containerWidth);
+    console.log('NEW ITEM WIDTH!!!', newItemWidth);
     setItemWidth(newItemWidth);
 
     // recalculate page size
@@ -78,11 +80,18 @@ export const Carousel = <T,>({
   }, []);
 
   useEffect(() => {
-    window.addEventListener("resize", calculatePageStateParams);
-
+    const observer = new ResizeObserver(() => {
+      calculatePageStateParams();
+    })
+    const firstCartItem = carousel.current?.firstElementChild;
+    if (firstCartItem) {
+      observer.observe(firstCartItem);
+    }
     return () => {
-      window.removeEventListener("resize", calculatePageStateParams);
-    };
+      if (firstCartItem) {
+        observer.unobserve(firstCartItem);
+      }
+    }
   }, [calculatePageStateParams]);
 
   const handleTransitionEnd = useCallback(() => {
