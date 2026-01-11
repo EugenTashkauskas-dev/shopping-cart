@@ -21,8 +21,8 @@ export const useCalculateCartTotal = () => {
     const priceInfo: TotalPrice = {
       discountApplied: price > 500000,
       summary: price,
-      discountSummary: price * 0.85
-    }
+      discountSummary: price * 0.85,
+    };
     return priceInfo;
   }, [cartItems]);
 

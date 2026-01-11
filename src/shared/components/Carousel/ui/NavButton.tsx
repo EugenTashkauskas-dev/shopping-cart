@@ -3,12 +3,11 @@ import Arrow from "@assets/arrow.svg?react";
 
 import type { NavButtonProps } from "../model/Carousel.types";
 
-export const NavButton = ({ disabled, onClick, position }: NavButtonProps) => (
+export const NavButton = ({ onClick, position, disabled }: NavButtonProps) => (
   <button
     onClick={onClick}
-    disabled={disabled}
     className={classnames(
-      "hover:green-500",
+      "hover:bg-green-200/75",
       "text-black",
       "disabled:text-gray-500",
       "text-center",
@@ -22,7 +21,9 @@ export const NavButton = ({ disabled, onClick, position }: NavButtonProps) => (
       "transition-all",
       "ease-in-out",
       "duration-300",
+      "cursor-pointer",
       {
+        disabled,
         "left-0": position === "left",
         "right-0": position === "right",
       },

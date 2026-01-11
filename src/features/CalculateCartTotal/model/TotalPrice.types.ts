@@ -1,5 +1,5 @@
 export type TotalPrice = {
-    summary: number;
-    discountSummary: number;
-    discountApplied: boolean;
-}
+  summary: number;
+  discountSummary: number;
+  discountApplied: boolean;
+};

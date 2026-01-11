@@ -1,4 +1,3 @@
-import classnames from "classnames";
 import { products } from "@entities/product/model/products.mock";
 import type { Product } from "@entities/product/model/types";
 import { ProductView } from "@entities/product/ui/Product";
@@ -13,17 +12,9 @@ export const ProductsCarousel = () => {
       </h3>
       <Carousel
         items={products}
-        getItemKey={(product: Product) => String(product.id)}
+        getItemKey={(product: Product, index: number) => `${index}_${product.id}`}
         renderItem={(product: Product) => (
-          <div
-            className={classnames(
-              "h-full",
-              "flex",
-              "flex-col",
-              "justify-between",
-              "align-bottom",
-            )}
-          >
+          <div className="h-full flex flex-col justify-between align-bottom">
             <ProductView product={product} />
             <AddToCartButton productId={product.id} />
           </div>

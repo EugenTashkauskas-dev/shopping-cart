@@ -10,8 +10,11 @@ export const ShowShoppingCartModalButton = () => {
   const items = useSelector(selectCartItems);
 
   const totalProductItems = useMemo(() => {
-    return items.reduce((totalNumber, cartItem) => totalNumber + cartItem.quantity, 0);
-  }, [items])
+    return items.reduce(
+      (totalNumber, cartItem) => totalNumber + cartItem.quantity,
+      0,
+    );
+  }, [items]);
 
   const handleOpenShoppingCart = useCallback(() => {
     dispatch(setOpenedState(true));
