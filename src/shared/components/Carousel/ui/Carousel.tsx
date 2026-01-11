@@ -46,8 +46,6 @@ export const Carousel = <T,>({
     const containerWidth = carousel.current?.offsetWidth ?? 0;
     const newItemWidth =
       carousel.current?.firstElementChild?.getBoundingClientRect().width ?? 1;
-    console.log('CONTAINER WIDTH!!!!!', containerWidth);
-    console.log('NEW ITEM WIDTH!!!', newItemWidth);
     setItemWidth(newItemWidth);
 
     // recalculate page size
