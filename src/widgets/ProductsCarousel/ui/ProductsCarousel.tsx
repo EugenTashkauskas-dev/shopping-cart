@@ -12,7 +12,9 @@ export const ProductsCarousel = () => {
       </h3>
       <Carousel
         items={products}
-        getItemKey={(product: Product, index: number) => `${index}_${product.id}`}
+        getItemKey={(product: Product, index: number) =>
+          `${index}_${product.id}`
+        }
         renderItem={(product: Product) => (
           <div className="h-full flex flex-col justify-between align-bottom">
             <ProductView product={product} />

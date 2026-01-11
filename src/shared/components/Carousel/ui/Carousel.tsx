@@ -25,7 +25,7 @@ export const Carousel = <T,>({
   );
 
   const [currentPage, setCurrentPage] = useState<number>(0);
-  const [{ pageSize, pagesCount }, setPageParams] = useState({
+  const [pageParams, setPageParams] = useState({
     pageSize: 0,
     pagesCount: 0,
   });
@@ -44,30 +44,35 @@ export const Carousel = <T,>({
 
   const calculatePageStateParams = useCallback(() => {
     const containerWidth = carousel.current?.offsetWidth ?? 0;
-    const newItemWidth = carousel.current?.firstElementChild?.clientWidth ?? 1;
+    const newItemWidth =
+      carousel.current?.firstElementChild?.getBoundingClientRect().width ?? 1;
     setItemWidth(newItemWidth);
 
     // recalculate page size
     const newPageSize = Math.floor(containerWidth / newItemWidth);
-    if (pageSize === newPageSize && pageSize > 0) {
+    if (pageParams.pageSize === newPageSize && pageParams.pageSize > 0) {
       return;
     }
 
-    const oldPageSize = pageSize;
-    const oldCurrentPage = currentPage;
-    const firstItemOnPageIndex =
-      oldPageSize * oldCurrentPage || originalStartIndex;
-    const newCurrentPage = Math.floor(firstItemOnPageIndex / newPageSize);
+    const newCurrentPage = Math.floor(originalStartIndex / newPageSize);
     setCurrentPage(newCurrentPage);
 
     setPageParams({
       pageSize: newPageSize,
       pagesCount: Math.ceil(scrollItems.length / newPageSize),
     });
-  }, [currentPage, originalStartIndex, pageSize, scrollItems]);
+  }, [originalStartIndex, pageParams.pageSize, scrollItems]);
+
+  const translateX = useMemo(() => {
+    let result = currentPage * pageParams.pageSize * itemWidth;
+    if (pageParams.pageSize % 2 === 0) {
+      result += itemWidth;
+    }
+
+    return result;
+  }, [currentPage, itemWidth, pageParams.pageSize]);
 
   useLayoutEffect(() => {
-    // react-hooks/set-state-in-effect
     calculatePageStateParams();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -83,12 +88,16 @@ export const Carousel = <T,>({
   const handleTransitionEnd = useCallback(() => {
     setAnimate(false);
     if (currentPage <= 1) {
-      setCurrentPage(currentPage + Math.floor(items.length / pageSize));
+      setCurrentPage(
+        currentPage + Math.floor(items.length / pageParams.pageSize),
+      );
     }
-    if (currentPage >= pagesCount - 1) {
-      setCurrentPage(currentPage - Math.floor(items.length / pageSize));
+    if (currentPage >= pageParams.pagesCount - 1) {
+      setCurrentPage(
+        currentPage - Math.floor(items.length / pageParams.pageSize),
+      );
     }
-  }, [currentPage, items.length, pageSize, pagesCount]);
+  }, [currentPage, items.length, pageParams.pageSize, pageParams.pagesCount]);
 
   return (
     <div className="carousel my-12 mx-auto">
@@ -106,17 +115,11 @@ export const Carousel = <T,>({
         <div className="overflow-hidden mx-10">
           <div
             ref={carousel}
-            className={classnames(
-              "carousel-container",
-              "relative",
-              "flex",
-              "z-0",
-              {
-                "transition-transform duration-200 ease-out": animate,
-              },
-            )}
+            className={classnames("carousel-container", "relative", "flex", {
+              "transition-transform duration-200 ease-out": animate,
+            })}
             style={{
-              transform: `translateX(-${currentPage * pageSize * itemWidth}px)`,
+              transform: `translateX(-${translateX}px)`,
             }}
             onTransitionEnd={handleTransitionEnd}
           >
@@ -125,7 +128,7 @@ export const Carousel = <T,>({
                 key={getItemKey(item, index)}
                 index={index}
                 item={item}
-                renderItem={renderItem}
+                renderItem={(product) => renderItem(product, index)}
                 className={`item_${getItemKey(item, index)}`}
               />
             ))}
